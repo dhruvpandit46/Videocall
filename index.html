@@ -65,11 +65,11 @@
                 radial-gradient(circle at 70% 70%, rgba(255, 184, 108, 0.05) 0%, transparent 50%);
             border-radius: 50%;
             opacity: 0.03;
-            animation: slowRotate 60s linear infinite;
+            animation: slowRotate 40s linear infinite;
             z-index: -1;
         }
 
-        /* Enhanced Starfield with Connections */
+        /* Enhanced Starfield with FAST Movement */
         .starfield {
             position: absolute;
             top: 0;
@@ -83,16 +83,16 @@
             position: absolute;
             background: white;
             border-radius: 50%;
-            animation: twinkle 4s infinite;
+            animation: twinkle 2s infinite;
         }
 
         .star-connection {
             position: absolute;
-            background: linear-gradient(90deg, rgba(123, 47, 247, 0.3), rgba(242, 123, 247, 0.2), rgba(255, 184, 108, 0.1));
+            background: linear-gradient(90deg, rgba(123, 47, 247, 0.4), rgba(242, 123, 247, 0.3), rgba(255, 184, 108, 0.2));
             transform-origin: 0 0;
             height: 1px;
             opacity: 0;
-            transition: opacity 1.5s ease;
+            transition: opacity 0.8s ease;
         }
 
         /* Geometric Patterns */
@@ -109,7 +109,7 @@
                 linear-gradient(45deg, transparent 49%, rgba(123, 47, 247, 0.3) 50%, transparent 51%),
                 linear-gradient(-45deg, transparent 49%, rgba(242, 123, 247, 0.3) 50%, transparent 51%);
             background-size: 60px 60px;
-            animation: patternShift 20s linear infinite;
+            animation: patternShift 15s linear infinite;
         }
 
         .pattern-2 {
@@ -117,7 +117,7 @@
                 radial-gradient(circle at 20% 50%, rgba(76, 201, 240, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(255, 184, 108, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 40% 80%, rgba(242, 123, 247, 0.1) 0%, transparent 50%);
-            animation: patternPulse 15s ease-in-out infinite;
+            animation: patternPulse 10s ease-in-out infinite;
         }
 
         /* Brand Gradient Bars */
@@ -167,7 +167,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            animation: gentleFloat 8s ease-in-out infinite;
+            animation: gentleFloat 6s ease-in-out infinite;
         }
         
         .logo-icon {
@@ -196,7 +196,7 @@
             z-index: -1;
             filter: blur(8px);
             opacity: 0.7;
-            animation: softGlow 3s ease-in-out infinite;
+            animation: softGlow 2s ease-in-out infinite;
         }
         
         .logo-text {
@@ -489,7 +489,7 @@
             z-index: -1;
             opacity: 0.6;
             filter: blur(8px);
-            animation: softGlow 4s ease-in-out infinite;
+            animation: softGlow 3s ease-in-out infinite;
         }
         
         .local-video-container {
@@ -971,9 +971,9 @@
 
         @keyframes starMove {
             0%, 100% { transform: translate(0, 0); }
-            25% { transform: translate(2px, -3px); }
-            50% { transform: translate(-1px, 2px); }
-            75% { transform: translate(3px, 1px); }
+            25% { transform: translate(5px, -8px); }
+            50% { transform: translate(-3px, 5px); }
+            75% { transform: translate(8px, 3px); }
         }
 
         /* Responsive Adjustments */
@@ -1149,12 +1149,12 @@
     </div>
 
     <script>
-        // Enhanced Starfield with Connections
+        // Enhanced Starfield with FAST Movement
         function createStarfield() {
             const starfield = document.getElementById('starfield');
             const stars = [];
             const connections = [];
-            const starCount = 80;
+            const starCount = 100; // Increased star count
             const maxConnections = 4;
             const connectionDistance = 150;
             
@@ -1168,15 +1168,15 @@
                 const y = Math.random() * 100;
                 const size = Math.random() * 2 + 1;
                 
-                // Random movement
-                const moveX = (Math.random() - 0.5) * 0.3;
-                const moveY = (Math.random() - 0.5) * 0.3;
+                // MUCH FASTER movement - increased from 0.3 to 1.5
+                const moveX = (Math.random() - 0.5) * 1.5;
+                const moveY = (Math.random() - 0.5) * 1.5;
                 
                 star.style.left = `${x}%`;
                 star.style.top = `${y}%`;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
-                star.style.animationDelay = `${Math.random() * 4}s`;
+                star.style.animationDelay = `${Math.random() * 2}s`; // Faster twinkle
                 
                 stars.push({
                     element: star,
@@ -1190,9 +1190,9 @@
             // Animation loop
             function animateStars() {
                 stars.forEach(star => {
-                    // Update position
-                    star.x += star.moveX * 0.1;
-                    star.y += star.moveY * 0.1;
+                    // Update position with FASTER movement
+                    star.x += star.moveX * 0.2; // Increased from 0.1 to 0.2
+                    star.y += star.moveY * 0.2; // Increased from 0.1 to 0.2
                     
                     // Wrap around edges
                     if (star.x > 100) star.x = 0;
@@ -1262,7 +1262,7 @@
                         
                         // Opacity based on distance
                         const opacity = 1 - (distance / connectionDistance);
-                        connection.style.opacity = opacity * 0.4;
+                        connection.style.opacity = opacity * 0.6; // Increased opacity for better visibility
                         
                         starfield.appendChild(connection);
                         connections.push({ element: connection });
@@ -1638,7 +1638,9 @@
                 }
             });
         };
-            if ("serviceWorker" in navigator) {
+    </script>
+    <script>
+    if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("service-worker.js")
         .then(() => console.log("SW registered"))
         .catch(err => console.log("SW failed", err));
