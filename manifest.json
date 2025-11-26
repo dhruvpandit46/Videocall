@@ -4,11 +4,11 @@
   "display": "standalone",
   "name": "Video Call",
   "orientation": "any",
-  "scope": "/",
+  "scope": "/Videocall/",
   "short_name": "VideoCall",
-  "start_url": "/",
+  "start_url": "/Videocall/",
   "theme_color": "#a09797",
-  "id": "dhruvpandit46.github",
+  "id": "dhruvpandit46.github.Videocall",
   "description": "It's a Video Calling App.\n\nIn this the user have to copy the id and send to the another person who want to talk, another user will copy it and paste it and than Video Call is good to go.",
   "icons": [
     {
